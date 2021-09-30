@@ -1,21 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+
+/* Importando telas */
+import TelaInicial from './src/screens/TelaInicial';
+import SegundaTela from './src/screens/SegundaTela';
+import CodeScanner from './src/screens/CodeScanner';
+
+
+const Stack = createStackNavigator();
+
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+        <Stack.Navigator initialRouteName='Inicial'>
+            <Stack.Screen name='Inicial' component={TelaInicial} />
+            <Stack.Screen name='Segunda' component={SegundaTela} />
+            <Stack.Screen name='CodeScanner' component={CodeScanner} />
+        </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App
